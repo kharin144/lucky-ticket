@@ -1,18 +1,7 @@
-CC=gcc
-CFLAGS= -std=c99 -O1 -lm -fopenmp
-LDFLAGS= -std=c99 -O1 -lm -fopenmp
+all: mlucky 
 
-SOURCES=luckyomp.c
-OBJECTS=$(SOURCES:.c=.o)
-EXECUTABLE=mlucky
-
-all: $(SOURCES) $(EXECUTABLE)
-	
-$(EXECUTABLE): $(OBJECTS) 
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
-
-.c.o:
-	$(CC) $(CFLAGS) $< -o $@
+mlucky: luckyomp.c 
+	gcc luckyomp.c -std=c99 -O1 -lm -fopenmp -o mlucky
 
 clean:
-	rm -rf *.o $(EXECUTABLE)
+	rm -f mlucky *.o
