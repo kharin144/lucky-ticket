@@ -1,6 +1,6 @@
 CC=gcc
-CFLAGS= -std=c99 -O1
-LDFLAGS= -lm -fopenmp
+CFLAGS= -std=c99 -O1 -lm -fopenmp
+LDFLAGS= -std=c99 -O1 -lm -fopenmp
 
 SOURCES=luckyomp.c
 OBJECTS=$(SOURCES:.c=.o)
@@ -13,3 +13,6 @@ $(EXECUTABLE): $(OBJECTS)
 
 .c.o:
 	$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	rm -rf *.o $(EXECUTABLE)
